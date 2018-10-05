@@ -1,0 +1,245 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Importing Challenges - OpenCTF</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">var path_to_root = "";</script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li><a href="intro.html"><strong aria-hidden="true">1.</strong> Intro</a></li><li><a href="challenge-import.html" class="active"><strong aria-hidden="true">2.</strong> Importing Challenges</a></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">OpenCTF</h1> 
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="#challenge-import" id="challenge-import"><h1>Challenge Import</h1></a>
+<p>You can import challenges into your CTF platform directly by using the challenge import tool.</p>
+<a class="header" href="#format" id="format"><h2>Format</h2></a>
+<p>The tool should be run from the root directory of all challenges. Each subdirectory of that directory will be considered a challenge, so if you want some extra files that are not considered to be part of a challenge, put a <code>.</code> before the name to hide the directory. The directory name is used as a <strong>unique identifier</strong> for this challenge, and will be stored in the database.</p>
+<p><strong>Note:</strong> on subsequent runs of the import tool, if a challenge exists in the database with the same name as the challenge directory, any scores for that challenge will not be wiped; instead, the problem data will simply be overwritten. If you'd like to wipe the scores as well, you must manually delete them.</p>
+<p>Each directory <em>must</em> have a <code>problem.toml</code> that contains metadata about the problem. This must contain a minimum of these fields:</p>
+<ul>
+<li><code>title: str</code> - The title of your challenge.</li>
+<li><code>description: str | description_file: path</code> - Specifying either of these provides a description. <code>description_file</code> will read the description from the file.</li>
+<li><code>grader: path</code> - The path to the grader file.</li>
+</ul>
+<p>As an example, a full configuration for an automatically generated Caesar cipher challenge is provided here:</p>
+<pre><code class="language-toml">title: &quot;Caesar cipher&quot;
+description: &quot;&quot;&quot;
+&quot;&quot;&quot;
+grader: &quot;grader.py&quot;
+</code></pre>
+<a class="header" href="#grader" id="grader"><h2>Grader</h2></a>
+<p>The grader is an executable which receives information about the submission and must return information about the correctness of the submission. It will receive the problem nonce and team ID through command-line arguments, and then the user's flag submission through standard input. It should print some feedback about the submission to standard output, and then exit with 1 (incorrect), or 0 (correct) to indicate whether the submission was correct or not.</p>
+<p><strong>Note:</strong> The grader file must be an <em>executable</em>. If you wish to use a scripting language such as Python or Perl, make sure you add the <a href="https://en.wikipedia.org/wiki/Shebang_(Unix)">shebang</a> (<code>#!</code>) line at the top of the file to indicate the means by which to run this file.</p>
+<p>As an example, the grader for a basic string flag is provided here:</p>
+<pre><code class="language-py">#!/usr/bin/env python3
+import sys
+user_flag = input().strip()
+if user_flag != &quot;flag{congratulations}&quot;:
+    print(&quot;Incorrect.&quot;)
+    sys.exit(1)
+print(&quot;Correct.&quot;)
+# automatically exits with status 0
+</code></pre>
+<p>Also, the grader for an automatically generated Caesar cipher challenge is provided here:</p>
+<pre><code class="language-py">#!/usr/bin/env python3
+import sys
+import random
+
+# for brevity, we'll just assume that these arguments exist without checking
+nonce = sys.argv[1]
+tid = sys.argv[2]
+
+# seed the random generator
+rng = random.SystemRandom(&quot;{}_{}&quot;.format(nonce, tid))
+actual_flag = &quot;flag{congratulations_%s}&quot; % rng.token_hex(6)
+
+# check correctness
+user_flag = input().strip()
+if user_flag != actual_flag:
+    print(&quot;Incorrect.&quot;)
+    sys.exit(1)
+print(&quot;Correct.&quot;)
+# automatically exits with status 0
+</code></pre>
+<a class="header" href="#problem-build-dependencies" id="problem-build-dependencies"><h2>Problem build dependencies</h2></a>
+<p>Sometimes, there may be extra steps you'd like to take before you import the challenges, such as building binaries or generating files. Perhaps you are storing all of your challenges in a code repository and don't want to commit build artifacts. In order to cater to this need, OpenCTF will check for the existence of a <code>Makefile</code> in the challenge directory and run it before anything else happens.</p>
+<p>Make sure that wherever you're running this import tool, you also have all the dependencies required to run the Makefiles. Don't put anything user- or team-specific in these Makefiles, since they are only run <em>once</em> during import. If you'd like to generate files that are specific to a user or team, set the challenge to <code>autogen</code> in <code>problem.toml</code>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
